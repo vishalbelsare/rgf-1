@@ -177,7 +177,8 @@ def compile_rgf():
         else:
             arch = 'Win32'
         platform_toolsets = ('Windows7.1SDK', 'v100', 'v110',
-                             'v120', 'v140', 'v141', 'v142')
+                             'v120', 'v140', 'v141', 'v142',
+                             'v143')
         for platform_toolset in platform_toolsets:
             success = silent_call(('MSBuild',
                                    'rgf.sln',
@@ -200,7 +201,8 @@ def compile_rgf():
             logger.info("Trying to build executable file with CMake and MSBuild.")
             generators = ('Visual Studio 10 2010', 'Visual Studio 11 2012',
                           'Visual Studio 12 2013', 'Visual Studio 14 2015',
-                          'Visual Studio 15 2017', 'Visual Studio 16 2019')
+                          'Visual Studio 15 2017', 'Visual Studio 16 2019',
+                          'Visual Studio 17 2022')
             for generator in generators:
                 clear_folder(os.path.join(rgf_base_dir, 'build'))
                 success = silent_call(('cmake', '../', '-G', generator, '-A', arch))
@@ -389,7 +391,6 @@ setup(name='rgf_python',
                    'Operating System :: POSIX',
                    'Operating System :: Unix',
                    'Programming Language :: Python :: 3',
-                   'Programming Language :: Python :: 3.6',
                    'Programming Language :: Python :: 3.7',
                    'Programming Language :: Python :: 3.8',
                    'Programming Language :: Python :: 3.9',
